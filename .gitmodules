@@ -1,0 +1,3 @@
+[submodule "sample-static-html"]
+	path = sample-static-html
+	url = ../sample-static-html.git

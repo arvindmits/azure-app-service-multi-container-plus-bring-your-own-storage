@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - share:/usr/share/nginx/html
+  git-sync:
+    image: openweb/git-sync:0.0.1
+    environment:
+      GIT_SYNC_REPO: "https://github.com/giggio/sample-static-html.git"
+      GIT_SYNC_DEST: "/usr/share/nginx/html"
+      GIT_SYNC_BRANCH: "master"
+      GIT_SYNC_REV: "FETCH_HEAD"
+      GIT_SYNC_WAIT: "10"
+    volumes:
+      - share:/usr/share/nginx/html
